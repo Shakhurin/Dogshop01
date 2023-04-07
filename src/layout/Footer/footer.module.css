@@ -1,0 +1,92 @@
+.wrapper{
+  background-color: #FFDB58;
+  /* position: absolute;
+  bottom: 0;
+  left: 0; */
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.faq{
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.copyright{
+  font-size: 10px;
+}
+
+#gmail{
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0 0 10px 0;
+}
+
+.hidden{
+  display: none;
+}
+
+
+@media (max-width: 720px){
+  .wrapper{
+    height: 160px;
+  }
+
+  .faq{
+    display: none;
+  }
+
+  .logoAndSmth{
+    display: none;
+  }
+
+  .contacts{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hidden{
+    display: block;
+  }
+
+  #onPhone{
+    display: none;
+  }
+
+  .wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #footerConnect{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #alwaysOnPhone{
+    font-size: 18px;
+    margin: 5px 0 5px 0;
+  }
+
+  #phoneNumber{
+    font-size: 22px;
+    margin: 5px 0 5px 0
+  }
+
+  #gmail{
+    font-size: 13px;
+  }
+
+  .copyright{
+    font-size: 10px;
+    margin: 3px 0 3px 0;
+  }
+}
