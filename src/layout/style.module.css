@@ -3,6 +3,7 @@ body{
   flex-direction: column;
 }
 
-footer{
-  flex-grow: 1;
+.footer{
+  position: absolute;
 }
+
