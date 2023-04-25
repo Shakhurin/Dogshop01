@@ -2,8 +2,8 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import style from "./style.module.css";
 import { useState } from "react";
-import { signUpFetch } from "../../api/signup";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 
 export const SignUp = () => {
   const navigate = useNavigate();
@@ -25,8 +25,20 @@ export const SignUp = () => {
     group: Yup.string().required("Обязательно"),
   });
 
+  const { mutateAsync: signUpMutation } = useMutation({
+    mutationFn: async (values) => {
+      const res = fetch("https://api.react-learning.ru/signup", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+    },
+  });
+
   const onSubmit = async (values) => {
-    const res = await signUpFetch(values);
+    const res = await signUpMutation(values);
     const responce = await res.json();
 
     if (res.ok) {

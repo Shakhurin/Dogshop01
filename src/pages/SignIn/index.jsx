@@ -1,9 +1,9 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import style from "./style.module.css";
-import { signInFetch } from "../../api/signIn";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
 
 export const SignIn = () => {
   const navigate = useNavigate();
@@ -15,16 +15,27 @@ export const SignIn = () => {
     password: "",
   };
 
+  const { mutateAsync:signInMutation } = useMutation({
+    mutationFn: async (values) => {
+      const res = fetch("https://api.react-learning.ru/signin", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+      return res;
+    },
+  });
+
   const onSubmit = async (values) => {
-    const res = await signInFetch(values);
+    const res = await signInMutation(values);
     const responce = await res.json();
-    // console.log(response)
 
     if (res.ok) {
       localStorage.setItem("token_auth", responce.token);
       return navigate("/products");
     }
-
     return setError(responce.message);
   };
 
