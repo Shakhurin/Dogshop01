@@ -15,7 +15,7 @@ export const SignIn = () => {
     password: "",
   };
 
-  const { mutateAsync:signInMutation } = useMutation({
+  const { mutateAsync: signInMutation } = useMutation({
     mutationFn: async (values) => {
       const res = fetch("https://api.react-learning.ru/signin", {
         method: "POST",
