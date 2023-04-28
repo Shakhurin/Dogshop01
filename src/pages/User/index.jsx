@@ -1,21 +1,26 @@
+import { useSelector } from "react-redux";
+import { useAuth } from "../../hooks/useAuth";
 import style from "./style.module.css"
 import { useQuery } from "@tanstack/react-query";
 
 export const User = () => {
+  const { token } = useAuth();
 
-  const {data:info} = useQuery({
-    queryKey:["userData"],
-    queryFn: async () => {
-      const res = await fetch("https://api.react-learning.ru/v2/group-11/users/me", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token_auth')}`
-        }
-      })
+  const info = useSelector(state => state.user)
 
-      const responce = await res.json()
-      return responce
-    }
-  })
+  // const {data:info} = useQuery({
+  //   queryKey:["userData"],
+  //   queryFn: async () => {
+  //     const res = await fetch("https://api.react-learning.ru/v2/group-11/users/me", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`
+  //       }
+  //     })
+
+  //     const responce = await res.json()
+  //     return responce
+  //   }
+  // })
   
   
   if(info) {

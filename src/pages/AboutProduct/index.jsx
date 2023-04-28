@@ -1,47 +1,30 @@
 import { useParams } from "react-router-dom";
 import style from "./style.module.css";
 import { useQuery } from "@tanstack/react-query";
+import { useAuth } from "../../hooks/useAuth";
 
 export const AboutProduct = () => {
   const { idOfProduct } = useParams();
+  const { token } = useAuth();
 
-
-  const {data:product} = useQuery({
-    queryKey:['productInfo', idOfProduct],
+  const { data: product } = useQuery({
+    queryKey: ["productInfo", idOfProduct],
     queryFn: async () => {
       const res = await fetch(
         `https://api.react-learning.ru/products/${idOfProduct}`,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token_auth")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
       const responce = await res.json();
 
-      return responce
-    }
-  })
+      return responce;
+    },
+  });
 
-
-  // useEffect(() => {
-  //   const fetchDataProduct = async () => {
-  //     const res = await fetch(
-  //       `https://api.react-learning.ru/products/${idOfProduct}`,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${localStorage.getItem("token_auth")}`,
-  //         },
-  //       }
-  //     );
-  //     const responce = await res.json();
-  //     console.log(responce);
-  //     setProduct(responce);
-  //   };
-  //   fetchDataProduct();
-  // }, [idOfProduct]);
-
-  if(product) {
+  if (product) {
     return (
       <div className={style.wrapper}>
         <div className={style.productImg}>
@@ -55,5 +38,6 @@ export const AboutProduct = () => {
           <p>Количество: {product.wight}</p>
         </div>
       </div>
-  );
-}}
+    );
+  }
+};

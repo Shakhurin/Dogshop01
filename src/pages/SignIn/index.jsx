@@ -4,9 +4,15 @@ import style from "./style.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import { useDispatch } from "react-redux";
+import { setUpUser } from "../../redux/slices/userSlice";
+import { signInFetch } from "../../api/user";
+import { useNoAuth } from "../../hooks/useNoAuth";
 
 export const SignIn = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useNoAuth();
 
   const [error, setError] = useState(false);
 
@@ -17,13 +23,7 @@ export const SignIn = () => {
 
   const { mutateAsync: signInMutation } = useMutation({
     mutationFn: async (values) => {
-      const res = fetch("https://api.react-learning.ru/signin", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
+      const res = await signInFetch(values);
       return res;
     },
   });
@@ -33,7 +33,7 @@ export const SignIn = () => {
     const responce = await res.json();
 
     if (res.ok) {
-      localStorage.setItem("token_auth", responce.token);
+      dispatch(setUpUser({ token: responce.token, ...responce.data }));
       return navigate("/products");
     }
     return setError(responce.message);
