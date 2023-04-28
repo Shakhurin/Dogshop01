@@ -9,6 +9,9 @@ import { User } from "./pages/User";
 import { Products } from "./pages/Products";
 import { AboutProduct } from "./pages/AboutProduct";
 import { NoToken } from "./pages/NoToken";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 const router = createBrowserRouter([
   {
@@ -46,15 +49,21 @@ const router = createBrowserRouter([
       },
       {
         path: "oops",
-        element: <NoToken />
+        element: <NoToken />,
       },
     ],
   },
 ]);
 
+const queryClient = new QueryClient();
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </Provider>
   </React.StrictMode>
 );

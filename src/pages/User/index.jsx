@@ -1,45 +1,40 @@
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useAuth } from "../../hooks/useAuth";
 import style from "./style.module.css"
+import { useQuery } from "@tanstack/react-query";
 
 export const User = () => {
+  const { token } = useAuth();
 
-  const [info, setInfo] = useState({})
+  const info = useSelector(state => state.user)
 
-  useEffect (() => {
-    const fetchUserInformation = async () => {
-      const res = await fetch("https://api.react-learning.ru/v2/group-11/users/me", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token_auth')}`
-        }
-      })
+  // const {data:info} = useQuery({
+  //   queryKey:["userData"],
+  //   queryFn: async () => {
+  //     const res = await fetch("https://api.react-learning.ru/v2/group-11/users/me", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`
+  //       }
+  //     })
 
-      // if(res.ok)
-
-      const responce = await res.json()
-      setInfo(responce)
-    }
-    fetchUserInformation()
-  }, [])
+  //     const responce = await res.json()
+  //     return responce
+  //   }
+  // })
   
-
-  return (
-    <>
+  
+  if(info) {
+    return (
     <div className={style.wrapper}>
-
-      
         <img src={info.avatar} alt="Моя аватарка" />
-      
       <div className={style.info}>
         Блок с описанием пользователя
-        
         <div>Имя: {info.name}</div>
         <div>Обо мне: {info.about}</div>
         <div>Группа: {info.group}</div>
         <div>email: {info.email}</div>
-
       </div>
-    
     </div>
-    </>
-  );
+    );
+  }
 };

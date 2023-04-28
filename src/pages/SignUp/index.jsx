@@ -2,12 +2,11 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import style from "./style.module.css";
 import { useState } from "react";
-import { signUpFetch } from "../../api/signup";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 
 export const SignUp = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [error, setError] = useState(false);
 
@@ -26,50 +25,72 @@ export const SignUp = () => {
     group: Yup.string().required("Обязательно"),
   });
 
+  const { mutateAsync: signUpMutation } = useMutation({
+    mutationFn: async (values) => {
+      const res = fetch("https://api.react-learning.ru/signup", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+    },
+  });
+
   const onSubmit = async (values) => {
-    const res = await signUpFetch(values);
+    const res = await signUpMutation(values);
     const responce = await res.json();
 
-    if(res.ok){
-      localStorage.setItem('token_auth', responce.token)
-      return navigate('/products')
+    if (res.ok) {
+      localStorage.setItem("token_auth", responce.token);
+      return navigate("/products");
     }
 
-    return setError(responce.message)
+    return setError(responce.message);
   };
 
   return (
     <>
-      <h1>SignUP</h1>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={onSubmit}
-        validationSchema={SignUpSchema}
-      >
-        <Form>
-          <div>
-            <Field name="email" placeholder="jane@acme.com*" type="email" />
-            <ErrorMessage name="email" component="p" className={style.error} />
-          </div>
+      <div className={style.signUpWindow}>
+        <h1>SignUP</h1>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+          validationSchema={SignUpSchema}
+        >
+          <Form>
+            <div className={style.signUpInforamition}>
+              <Field name="email" placeholder="jane@acme.com*" type="email" />
+              <ErrorMessage
+                name="email"
+                component="p"
+                className={style.error}
+              />
+            </div>
 
-          <div>
-            <Field name="password" placeholder="Пароль*" type="password" />
-            <ErrorMessage
-              name="password"
-              component="p"
-              className={style.error}
-            />
-          </div>
+            <div className={style.signUpInforamition}>
+              <Field name="password" placeholder="Пароль*" type="password" />
+              <ErrorMessage
+                name="password"
+                component="p"
+                className={style.error}
+              />
+            </div>
 
-          <div>
-            <Field name="group" placeholder="Группа*" />
-            <ErrorMessage name="group" component="p" className={style.error} />
-          </div>
+            <div className={style.signUpInforamition}>
+              <Field name="group" placeholder="Группа*" />
+              <ErrorMessage
+                name="group"
+                component="p"
+                className={style.error}
+              />
+            </div>
 
-          <button type="submit">Подтвердить</button>
-          {error && <p className={style.error}>{error}</p>}
-        </Form>
-      </Formik>
+            <button type="submit">Подтвердить</button>
+            {error && <p className={style.error}>{error}</p>}
+          </Form>
+        </Formik>
+      </div>
     </>
   );
 };
