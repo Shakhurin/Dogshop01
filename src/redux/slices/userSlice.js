@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { REDUX_LC, myInitialState } from "../initialState";
+import { REDUX_STATE_LC, myInitialState } from "../initialState";
 
 const userSlice = createSlice({
   name: "user",
@@ -9,7 +9,7 @@ const userSlice = createSlice({
       return action.payload;
     },
     cleanUser() {
-      localStorage.removeItem(REDUX_LC)
+      localStorage.removeItem(REDUX_STATE_LC)
       return myInitialState.user;
     },
   },

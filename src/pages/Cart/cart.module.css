@@ -1,0 +1,14 @@
+.cartTitle{
+  font-weight: 700;
+  margin: 0 10px 0 0;
+}
+
+.cartProductsCount{
+  color: #999;
+  font-size: 14px;
+}
+
+.cartHeader{
+  display: flex;
+  align-items: center;
+}

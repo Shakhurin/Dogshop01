@@ -1,8 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import style from "./cardItem.module.css";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slices/cartSlice";
 
 export const CardItem = ({ product }) => {
   const navigate = useNavigate();
+
+  const dispatch = useDispatch()
+
+  const handleAddToCart = (event) => {
+    event.stopPropagation()
+
+    // Логика добавления 
+    dispatch(addToCart(product._id))
+  }
 
   if (product.name) {
     return (
@@ -20,11 +31,11 @@ export const CardItem = ({ product }) => {
         <p className={style.quantity}>{product.wight}</p>
         <div className={style.productName}>{product.name}</div>
         <div className={style.prittyButton}>
-          <button>
-            <b>В корзину</b>
+          <button onClick={(event) => handleAddToCart(event)}>
+            В корзину
           </button>
           <button onClick={() => navigate(`${product["_id"]}`)}>
-            <b>Подробнее</b>
+            Подробнее
           </button>
         </div>
       </div>

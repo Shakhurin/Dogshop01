@@ -10,8 +10,9 @@ export const Header = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const cart = useSelector(state => state.cart)
 
-  const onClick = () => {
+  const handleExit = () => {
     dispatch(cleanUser())
     return navigate('/signin')
   } 
@@ -26,7 +27,8 @@ export const Header = () => {
           </div>
           {!token ? <div><Link to="signin">Войти</Link></div> : <div><Link to='user'>Личный кабинет</Link></div>}
           {!token ? <div><Link to="signup">Зарегистрироваться</Link></div> : ""}
-          {token ? <div onClick={onClick}> <Link to='signin'>Выйти</Link></div> : ''}
+          {token ? <div> <Link to='cart'>Корзина {!!cart.length && `(${cart.length})`}</Link></div> : ''}
+          {token ? <div onClick={handleExit}> <Link to='signin'>Выйти</Link></div> : ''}
         </div>
       </div>
     </>
