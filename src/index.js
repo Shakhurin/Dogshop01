@@ -12,6 +12,8 @@ import { NoToken } from "./pages/NoToken";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { Cart } from "./pages/Cart";
+import { Favourites } from "./pages/Favourite";
 
 const router = createBrowserRouter([
   {
@@ -40,17 +42,17 @@ const router = createBrowserRouter([
         element: <User />,
       },
       {
-        path: "favourite",
-        element: <div>Избранное же, ну</div>,
-      },
-      {
         path: "cart",
-        element: <div>Корзина... Ну типа</div>,
+        element: <Cart />,
       },
       {
         path: "oops",
         element: <NoToken />,
       },
+      {
+        path: "favourites",
+        element: <Favourites />
+      }
     ],
   },
 ]);

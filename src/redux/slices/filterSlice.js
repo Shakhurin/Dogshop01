@@ -8,6 +8,9 @@ const filterSlice = createSlice({
   reducers:{
     changeSearchValue(state,action){
       state.search = action.payload
+    },
+    changeSorting(state,action){
+      state.sorting = action.payload
     }
   }
 })

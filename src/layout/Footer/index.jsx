@@ -1,4 +1,9 @@
 import style from "./footer.module.css";
+import instagram from "../../assets/footerSVG/instagram-svg.svg";
+import telegram from "../../assets/footerSVG/telegram-svg.svg";
+import viber from "../../assets/footerSVG/viber-svg.svg";
+import vk from "../../assets/footerSVG/vk-with-circle-svg.svg";
+import whatsapp from "../../assets/footerSVG/whatsapp-128-svg.svg";
 
 export const Footer = () => {
   const firstFaqArray = ["Каталог", "Акции", "Новости", "Отзывы"];
@@ -38,7 +43,11 @@ export const Footer = () => {
           </p>
         </div>
         <div>
-          <img src="../../assets/footerSVG/instagram-svg" alt="" />
+          {/* <img src={instagram} alt="instagram" className={style.iqon}/>
+          <img src={telegram} alt="instagram" className={style.iqon}/>
+          <img src={viber} alt="instagram" className={style.iqon}/>
+          <img src={whatsapp} alt="instagram" className={style.iqon}/>
+          <img src={vk} alt="instagram" className={style.iqon}/> */}
         </div>
       </div>
     </footer>

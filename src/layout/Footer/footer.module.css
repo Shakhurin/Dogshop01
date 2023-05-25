@@ -29,6 +29,11 @@
   display: none;
 }
 
+.iqon{
+  height: 27px;
+  width: 27px;
+}
+
 
 @media (max-width: 720px){
   .wrapper{

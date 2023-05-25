@@ -5,8 +5,9 @@ import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "../../hooks/useAuth";
 import style from "./cardList.module.css";
 import { useState, useEffect } from "react";
+import { sortingData } from "../../utils/sortingData";
 
-export const CardList = () => {
+export const CardList = ({ sortingValue }) => {
   const search = useSelector((state) => state.filter.search);
   const { token } = useAuth();
 
@@ -28,7 +29,8 @@ export const CardList = () => {
   const [productOrderedList, setProductOrderedList] = useState([]);
 
   useEffect(() => {
-    if (productsObj?.products) { //? для проверки наличия объекта productsObj
+    if (productsObj?.products) {
+      //? для проверки наличия объекта productsObj
       setProductOrderedList(
         productsObj.products.filter((el) => el.name.includes(search))
       );
@@ -41,7 +43,7 @@ export const CardList = () => {
 
   return (
     <div className={style.cardsBlock}>
-      {productOrderedList.map((product, index) => {
+      {sortingData(productOrderedList, sortingValue).map((product, index) => {
         return <CardItem key={index} product={product} />;
       })}
     </div>
