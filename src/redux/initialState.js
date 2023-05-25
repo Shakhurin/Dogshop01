@@ -3,10 +3,11 @@ export const REDUX_STATE_LC = 'redux_superStore'
 export const myInitialState = {
   user:{},
   filter:{
-    search: ""
+    search: "",
+    sorting: "",
   },
-  cart: [],
-  favourite: []
+  favourite: [],
+  cart: []
 }
 
 export const getInitialData = () => {

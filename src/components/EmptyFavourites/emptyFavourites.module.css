@@ -1,0 +1,18 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  width: 50%;
+  height: auto; 
+  border: 2px solid #eaeaea; /* Цвет рамки */
+  border-radius: 10px; /* Закругление углов рамки */
+  padding: 20px; /* Отступ внутри рамки */
+  background-color: #ffffff; /* Цвет фона внутри рамки */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень рамки */
+}
+
+a {
+  text-decoration: none;
+  color: black
+}

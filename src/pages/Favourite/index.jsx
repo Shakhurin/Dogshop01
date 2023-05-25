@@ -1,30 +1,28 @@
-import { useQuery } from "@tanstack/react-query";
-import { useAuth } from "../../hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
-import { CartItem } from "../../components/CartItem";
-import style from "./cart.module.css";
-import { EmptyCart } from "../../components/EmptyCart";
-import { deleteAllFromCart, deleteFromCart } from "../../redux/slices/cartSlice";
+import { useAuth } from "../../hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import { EmptyFavourites } from "../../components/EmptyFavourites";
+import style from "./favourite.module.css";
+import { FavouritesItem } from "../../components/FavouritesItem";
+import { deleteFromFavourites } from "../../redux/slices/favouritesSlice";
 
-
-export const Cart = () => {
+export const Favourites = () => {
   const { token } = useAuth();
-  const cart = useSelector((state) => state.cart);
+  const favourites = useSelector((state) => state.favourites);
   const dispatch = useDispatch()
 
   const { data } = useQuery({
-    queryKey: ["getCartProducts", cart.length],
+    queryKey: ["getFavouritesProducts", favourites.length],
     queryFn: async () => {
       const responce = await Promise.allSettled(
-        cart.map((product) =>
-          fetch(`https://api.react-learning.ru/products/${product._id}`, {
+        favourites.map((_id) =>
+          fetch(`https://api.react-learning.ru/products/${_id}`, {
             method: "GET",
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }).then((res) => res.json()).then(data=>{
-
-            return { _id: product._id, data }
+            return { _id, data }
           })
         )
       );
@@ -33,7 +31,7 @@ export const Cart = () => {
 
         // проверка и удаление в случае, если товара с таким id не существует (был удален)
         if (el.value.data?.err) {
-          dispatch(deleteFromCart(el.value._id))
+          dispatch(deleteFromFavourites(el.value._id))
         }
 
         // фильтруем rejected статусы и fullfiled, но с ошибкой
@@ -42,27 +40,23 @@ export const Cart = () => {
     },
     initialData: [],
   });
-  
 
-  if(cart.length){
 
-    return (
-      <>
+  if(favourites.length){
+    return <>
         <div className={style.cartHeader}>
-          <h1 className={style.cartTitle}>Корзина</h1>
-          <p className={style.cartProductsCount}>Количество {cart.length}</p>
-          <button onClick={()=> dispatch(deleteAllFromCart(cart))}></button>
+          <h1 className={style.cartTitle}>Избранное</h1>
+          <p className={style.cartProductsCount}>Количество {favourites.length}</p>
         </div>
         {data.map((product) => (
-          <CartItem key={product._id} product={product} />
+          <FavouritesItem key={product._id} product={product} />
         ))}
       </>
-    );
   }
+
   return(
     <div className={style.plug}>
-      <EmptyCart />
+      <EmptyFavourites />
     </div>
   )
-
-};
+}
