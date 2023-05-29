@@ -1,0 +1,77 @@
+.header{
+  background-color: #FFDB58;
+  height: 60px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+input{
+  border-radius: 20px;
+  font-size: 1.1rem;
+  padding: 15px;
+  height: 10px;
+  width: 475px;
+  border: none;
+}
+
+.searchBarDiv{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.headerIcons {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.7;
+}
+
+.logo{
+  flex: 0;
+}
+
+#hidden{
+  display: none;
+}
+
+.navBlock{
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+}
+
+/* Мобильная ситуация */
+
+@media (max-width: 720px){
+  .header{
+    width: 100%;
+  }
+
+  input{
+    width: 180px
+  }
+
+  .headerIcons{
+    display: none;
+  }
+
+  #hidden{
+    display: block;
+  }
+
+  .barIcon{
+    margin: 0;
+  }
+
+}

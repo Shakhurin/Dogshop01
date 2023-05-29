@@ -1,0 +1,22 @@
+.error{
+  color: red;
+}
+
+.signInWindow{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.wrapper{
+  margin: 20px 0;
+  background-color: #e3e3e3;
+  border: 2px solid #848080; /* Цвет рамки */
+  border-radius: 10px; /* Закругление углов рамки */
+  padding: 20px; /* Отступ внутри рамки */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень рамки */
+}
+
+.signInInformation{
+  margin: 13px 0 13px 0;
+}

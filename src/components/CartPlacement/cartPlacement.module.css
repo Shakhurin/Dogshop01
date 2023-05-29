@@ -1,0 +1,40 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border: 2px solid #eaeaea; /* Цвет рамки */
+  border-radius: 10px; /* Закругление углов рамки */
+  padding: 20px; /* Отступ внутри рамки */
+  background-color: #ffffff; /* Цвет фона внутри рамки */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень рамки */
+}
+
+.conditions{
+  display: flex;
+  justify-content: center;
+}
+
+.conditions p {
+  font-size: 20px;
+}
+
+.zakaz{
+  width: 200px;
+}
+
+.itog{
+  flex: 3
+}
+
+.summ{
+  flex: 1
+}
+
+.btn{
+  display: flex;
+  justify-content: center;
+}
+
+.summary{
+  display: flex;
+}

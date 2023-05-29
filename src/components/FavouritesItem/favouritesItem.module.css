@@ -1,0 +1,29 @@
+.wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+.card{
+  display: flex;
+  margin: 10px;
+  width: 80%;
+  height: auto; 
+  border: 2px solid #eaeaea; /* Цвет рамки */
+  border-radius: 10px; /* Закругление углов рамки */
+  padding: 20px; /* Отступ внутри рамки */
+  background-color: #ffffff; /* Цвет фона внутри рамки */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень рамки */
+}
+
+.btn{
+  flex:1
+}
+
+.info{
+  flex: 3;
+}
+
+.img{
+  flex: 1;
+}
+

@@ -1,0 +1,39 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+}
+
+.cartTitle{
+  font-weight: 700;
+  margin: 0 10px 0 0;
+}
+
+.cartProductsCount{
+  color: #999;
+  font-size: 14px;
+}
+
+.cartHeader{
+  display: flex;
+  flex-direction: column ;
+  margin: 15px;
+}
+
+.emptyCartContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.block{
+  display: flex;
+}
+
+.order{
+  flex: 4;
+}
+
+.placement{
+  flex: 1;
+}

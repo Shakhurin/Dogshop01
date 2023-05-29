@@ -1,0 +1,26 @@
+.wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+  gap: 30px;
+  width: auto;
+}
+
+.information{
+  width: 700px
+}
+
+.productImg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  height: 250px;
+}
+
+.productImg img{
+  width: auto;
+  height: 250px;
+}

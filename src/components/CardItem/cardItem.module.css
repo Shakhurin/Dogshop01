@@ -1,0 +1,94 @@
+.card{
+  width: 250px;
+  height:400px;
+  border: 2px solid #eaeaea; /* Цвет рамки */
+  border-radius: 10px; /* Закругление углов рамки */
+  padding: 20px; /* Отступ внутри рамки */
+  background-color: #ffffff; /* Цвет фона внутри рамки */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень рамки */
+}
+
+.imageProduct{
+  margin-top: 5px;
+  width: 220px;
+  height: 220px;
+}
+
+.imageBox{
+  display: flex;
+  justify-content: center;
+}
+
+button{
+  border-radius: 16px;
+  border: none;
+  height: 30px;
+  width: 130px;
+  font-size: 1.05rem;
+  background-color: #FFDB58;
+  cursor: pointer;
+  margin-bottom: 7px;
+}
+
+.prittyButton{
+  padding: 0 0 0 5px;
+  margin-top: 20px;
+}
+
+.productName{
+  max-height: 20px;
+  padding: 3px 5px 0 5px;
+  font-size: 15px;
+  overflow: hidden;
+}
+
+.quantity{
+  font-size: 10px;
+  margin: 5px 0 0 0;
+  padding: 0 0 0 5px;
+}
+
+.price{
+  padding: 0 0 0 5px;
+  margin-bottom: 0;
+}
+
+.buttonNavigation{
+  display: flex;
+}
+
+.likeButton {
+  width: 80px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #c18fef;
+  color: #333;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.likeButton:hover {
+  background-color: #f1633f;
+}
+
+.likeButtonSection{
+  display: flex;
+  align-items: center;
+  padding: 0 5px 0 0;
+  margin-top: 20px;
+}
+
+/* Мобильная история */
+
+@media (max-width: 720px){
+  .card{
+    width: 180px;
+    height: 320px
+  }
+
+  .imageProduct{
+    width: 180px;
+    height: 180px;
+  }
+}

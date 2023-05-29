@@ -1,0 +1,19 @@
+body{
+  display: flex;
+  flex-direction: column;
+}
+
+.footer{
+  position: absolute;
+}
+
+main{
+  height: 100%;
+  flex: 1 1 auto;
+}
+
+.wrapper{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,27 @@
+.modal_wrapper {
+  left: 0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.modal_content{
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+}
+
+.closeBtn{
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background-color: transparent;
+  color: #494747;
+  font-size: 14px;
+}
