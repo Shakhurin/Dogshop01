@@ -53,8 +53,30 @@ button{
   margin-bottom: 0;
 }
 
-.buttonBlock{
-display: flex;
+.buttonNavigation{
+  display: flex;
+}
+
+.likeButton {
+  width: 80px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #c18fef;
+  color: #333;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.likeButton:hover {
+  background-color: #f1633f;
+}
+
+.likeButtonSection{
+  display: flex;
+  align-items: center;
+  padding: 0 5px 0 0;
+  margin-top: 20px;
 }
 
 /* Мобильная история */

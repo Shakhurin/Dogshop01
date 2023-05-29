@@ -9,7 +9,7 @@ import { deleteFromFavourites } from "../../redux/slices/favouritesSlice";
 export const Favourites = () => {
   const { token } = useAuth();
   const favourites = useSelector((state) => state.favourites);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const { data } = useQuery({
     queryKey: ["getFavouritesProducts", favourites.length],
@@ -21,42 +21,50 @@ export const Favourites = () => {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }).then((res) => res.json()).then(data=>{
-            return { _id, data }
           })
+            .then((res) => res.json())
+            .then((data) => {
+              return { _id, data };
+            })
         )
       );
 
-      return responce.filter(el => {
+      return responce
+        .filter((el) => {
+          // проверка и удаление в случае, если товара с таким id не существует (был удален)
+          if (el.value.data?.err) {
+            dispatch(deleteFromFavourites(el.value._id));
+          }
 
-        // проверка и удаление в случае, если товара с таким id не существует (был удален)
-        if (el.value.data?.err) {
-          dispatch(deleteFromFavourites(el.value._id))
-        }
-
-        // фильтруем rejected статусы и fullfiled, но с ошибкой
-        return el.status !== 'rejected' && !el.value.data.err
-      }).map(el => el.value.data);
+          // фильтруем rejected статусы и fullfiled, но с ошибкой
+          return el.status !== "rejected" && !el.value.data.err;
+        })
+        .map((el) => el.value.data);
     },
     initialData: [],
   });
 
-
-  if(favourites.length){
-    return <>
+  if (favourites.length) {
+    return (
+      <>
         <div className={style.cartHeader}>
           <h1 className={style.cartTitle}>Избранное</h1>
-          <p className={style.cartProductsCount}>Количество {favourites.length}</p>
+          <p className={style.cartProductsCount}>
+            Количество {favourites.length}
+          </p>
         </div>
         {data.map((product) => (
           <FavouritesItem key={product._id} product={product} />
         ))}
       </>
+    );
   }
 
-  return(
-    <div className={style.plug}>
-      <EmptyFavourites />
+  return (
+    <div>
+      <div className={style.wrapper}>
+        <EmptyFavourites />
+      </div>
     </div>
-  )
-}
+  );
+};

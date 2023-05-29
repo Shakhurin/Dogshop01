@@ -10,6 +10,7 @@ import { sortingData } from "../../utils/sortingData";
 export const CardList = ({ sortingValue }) => {
   const search = useSelector((state) => state.filter.search);
   const { token } = useAuth();
+  const [productOrderedList, setProductOrderedList] = useState([]);
 
   const {
     data: productsObj,
@@ -26,7 +27,6 @@ export const CardList = ({ sortingValue }) => {
     },
   });
 
-  const [productOrderedList, setProductOrderedList] = useState([]);
 
   useEffect(() => {
     if (productsObj?.products) {

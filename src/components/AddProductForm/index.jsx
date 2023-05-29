@@ -9,8 +9,6 @@ export const AddProductForm = ({token, closeModal}) => {
     name: "",
     description: "",
     pictures: "",
-    discount: 0,
-    stock: 0,
     wight: "",
     tags: [],
   };
@@ -18,9 +16,8 @@ export const AddProductForm = ({token, closeModal}) => {
   const { mutate } = useMutation({
     mutationFn: async (values) => {
       const res = await fetchNewProduct(token, values);
-      console.log(`Рес: ${res}`);
+
       if(res.ok){
-        console.log("Успешно создан");
 
         return closeModal()
       }
@@ -46,14 +43,14 @@ export const AddProductForm = ({token, closeModal}) => {
   });
 
   return (
-    <div className={style.signInWindow}>
+    <div className={style.modalWindow}>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={SignInSchema}
       >
         <Form>
-          <div className={style.signInInformation}>
+          <div className={style.modalInformation}>
             <Field 
               name="name" 
               placeholder="Название товара" 
@@ -62,7 +59,7 @@ export const AddProductForm = ({token, closeModal}) => {
             <ErrorMessage name="name" component="p" className={style.error} />
           </div>
 
-          <div className={style.signInInformation}>
+          <div className={style.modalInformation}>
             <Field 
               name="description" 
               placeholder="Описание товара" 
@@ -71,7 +68,7 @@ export const AddProductForm = ({token, closeModal}) => {
             <ErrorMessage name="description" component="p" className={style.error} />
           </div>
 
-          <div className={style.signInInformation}>
+          <div className={style.modalInformation}>
             <Field 
               name="pictures" 
               placeholder="Фото товара" 
@@ -80,7 +77,7 @@ export const AddProductForm = ({token, closeModal}) => {
             <ErrorMessage name="pictures" component="p" className={style.error} />
           </div>
 
-          <div className={style.signInInformation}>
+          <div className={style.modalInformation}>
             <Field 
               name="wight" 
               placeholder="Размеры товара" 
@@ -89,7 +86,7 @@ export const AddProductForm = ({token, closeModal}) => {
             <ErrorMessage name="wight" component="p" className={style.error} />
           </div>
 
-          <div className={style.signInInformation}>
+          <div className={style.modalInformation}>
             <Field 
               name="price" 
               placeholder="Цена товара" 
@@ -98,7 +95,7 @@ export const AddProductForm = ({token, closeModal}) => {
             <ErrorMessage name="price" component="p" className={style.error} />
           </div>
 
-          <div className={style.signInInformation}>
+          <div className={style.modalInformation}>
             <Field 
               name="discount" 
               placeholder="Скидка на товар" 
@@ -107,7 +104,7 @@ export const AddProductForm = ({token, closeModal}) => {
             <ErrorMessage name="discount" component="p" className={style.error} />
           </div>
 
-          <div className={style.signInInformation}>
+          <div className={style.modalInformation}>
             <Field 
               name="stock" 
               placeholder="Количество товара" 

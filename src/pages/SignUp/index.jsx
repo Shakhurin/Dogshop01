@@ -27,7 +27,7 @@ export const SignUp = () => {
 
   const { mutateAsync: signUpMutation } = useMutation({
     mutationFn: async (values) => {
-      const res = fetch("https://api.react-learning.ru/signup", {
+      fetch("https://api.react-learning.ru/signup", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -52,44 +52,46 @@ export const SignUp = () => {
   return (
     <>
       <div className={style.signUpWindow}>
-        <h1>SignUP</h1>
-        <Formik
-          initialValues={initialValues}
-          onSubmit={onSubmit}
-          validationSchema={SignUpSchema}
-        >
-          <Form>
-            <div className={style.signUpInforamition}>
-              <Field name="email" placeholder="jane@acme.com*" type="email" />
-              <ErrorMessage
-                name="email"
-                component="p"
-                className={style.error}
-              />
-            </div>
+        <div className={style.wrapper}>
+          <h1>SignUP</h1>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validationSchema={SignUpSchema}
+          >
+            <Form>
+              <div className={style.signUpInforamition}>
+                <Field name="email" placeholder="jane@acme.com*" type="email" />
+                <ErrorMessage
+                  name="email"
+                  component="p"
+                  className={style.error}
+                />
+              </div>
 
-            <div className={style.signUpInforamition}>
-              <Field name="password" placeholder="Пароль*" type="password" />
-              <ErrorMessage
-                name="password"
-                component="p"
-                className={style.error}
-              />
-            </div>
+              <div className={style.signUpInforamition}>
+                <Field name="password" placeholder="Пароль*" type="password" />
+                <ErrorMessage
+                  name="password"
+                  component="p"
+                  className={style.error}
+                />
+              </div>
 
-            <div className={style.signUpInforamition}>
-              <Field name="group" placeholder="Группа*" />
-              <ErrorMessage
-                name="group"
-                component="p"
-                className={style.error}
-              />
-            </div>
+              <div className={style.signUpInforamition}>
+                <Field name="group" placeholder="Группа*" />
+                <ErrorMessage
+                  name="group"
+                  component="p"
+                  className={style.error}
+                />
+              </div>
 
-            <button type="submit">Подтвердить</button>
-            {error && <p className={style.error}>{error}</p>}
-          </Form>
-        </Formik>
+              <button type="submit">Подтвердить</button>
+              {error && <p className={style.error}>{error}</p>}
+            </Form>
+          </Formik>
+        </div>
       </div>
     </>
   );

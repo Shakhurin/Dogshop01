@@ -3,20 +3,15 @@
   height: 60px;
   display: flex;
   width: 100%;
-  align-items: center;
   justify-content: center;
-}
-
-.fuckOff{
-  background-color: aqua;
-  width: 32px;
 }
 
 .wrapper{
   display: flex;
-  width: 940px;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
+  max-width: 1200px;
 }
 
 input{
@@ -24,13 +19,14 @@ input{
   font-size: 1.1rem;
   padding: 15px;
   height: 10px;
-  width: 500px;
+  width: 475px;
   border: none;
 }
 
 .searchBarDiv{
+  flex: 1;
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .headerIcons {
@@ -42,12 +38,17 @@ input{
 }
 
 .logo{
-  width: 80px;
-  height: 50px;
+  flex: 0;
 }
 
 #hidden{
   display: none;
+}
+
+.navBlock{
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
 }
 
 /* Мобильная ситуация */

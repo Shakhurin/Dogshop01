@@ -1,4 +1,8 @@
 .wrapper{
+  margin: 20px;
+}
+
+.frame{
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -6,9 +10,23 @@
   width: 700px;
   height: 300px;
   margin: auto;
-  column-gap: 20px;  
+  column-gap: 20px; 
+  border: 2px solid #eaeaea; /* Цвет рамки */
+  border-radius: 10px; /* Закругление углов рамки */
+  background-color: #ffffff; /* Цвет фона внутри рамки */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Тень рамки */ 
 }
 
 img{
   width: 150px;
+}
+
+.modalDiv{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.modalPortal{
+  width: 300px;
 }

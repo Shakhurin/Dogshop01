@@ -47,35 +47,37 @@ export const SignIn = () => {
   return (
     <>
       <div className={style.signInWindow}>
-        <h1>SignIn</h1>
-        <Formik
-          initialValues={initialValues}
-          onSubmit={onSubmit}
-          validationSchema={SignInSchema}
-        >
-          <Form>
-            <div className={style.signInInformation}>
-              <Field name="email" placeholder="jane@acme.com*" type="email" />
-              <ErrorMessage
-                name="email"
-                component="p"
-                className={style.error}
-              />
-            </div>
+        <div className={style.wrapper}>
+          <h1>SignIn</h1>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validationSchema={SignInSchema}
+          >
+            <Form>
+              <div className={style.signInInformation}>
+                <Field name="email" placeholder="jane@acme.com*" type="email" />
+                <ErrorMessage
+                  name="email"
+                  component="p"
+                  className={style.error}
+                />
+              </div>
 
-            <div className={style.signInInformation}>
-              <Field name="password" placeholder="Пароль*" type="password" />
-              <ErrorMessage
-                name="password"
-                component="p"
-                className={style.error}
-              />
-            </div>
+              <div className={style.signInInformation}>
+                <Field name="password" placeholder="Пароль*" type="password" />
+                <ErrorMessage
+                  name="password"
+                  component="p"
+                  className={style.error}
+                />
+              </div>
 
-            <button type="submit">Подтвердить</button>
-            {error && <p className={style.error}>{error}</p>}
-          </Form>
-        </Formik>
+              <button type="submit">Подтвердить</button>
+              {error && <p className={style.error}>{error}</p>}
+            </Form>
+          </Formik>
+        </div>
       </div>
     </>
   );

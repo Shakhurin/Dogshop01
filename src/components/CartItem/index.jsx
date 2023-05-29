@@ -22,15 +22,20 @@ export const CartItem = ({ product }) => {
     dispatch(deleteFromCart(product._id));
   };
 
+  const discountPrice = product.price * (1-product.discount/100)
+
   return (
     <div className={style.card}>
-      <div>
+      <div className={style.img}>
         <img src={product.pictures} alt="" />
       </div>
-      <div>
-        <p>{product.name}</p>
+      <div className={style.info}>
+        <p>Название: {product.name}</p>
+        <p>Доступно: {product.stock}</p>
+        {product.wight?<p>Количество: {product.wight}</p>:<p>Количество: -</p>}
+        {product.discount > 0 ? <p>Cкидка: {product.discount}%</p> : ''}
       </div>
-      <div>
+      <div className={style.btn}>
         <button
           onClick={() => handleDecriment()}
           className={style.decorationButton}
@@ -46,10 +51,10 @@ export const CartItem = ({ product }) => {
           +
         </button>
       </div>
-      <div>
-        <p>{product.price * productInCart?.count}</p>
+      <div className={style.overAllprice}>
+        <p>{Math.ceil(discountPrice) * productInCart?.count}p</p>
       </div>
-      <div>
+      <div className={style.dlt}>
         <button onClick={() => handleDeleteCart()} className={style.deleteBtn}>
           Удалить
         </button>

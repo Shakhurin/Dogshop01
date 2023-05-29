@@ -50,7 +50,7 @@ const ModalContent = ({ children, closeModal }) => {
 
 
   return <motion.div variants={childrenVariants} className={styles.modal_content}>
-    <button className="btn btn-primary" onClick={closeModal}>Close</button>
+    <button className={styles.closeBtn} onClick={closeModal}>Закрыть</button>
     {children}
   </motion.div>
 }

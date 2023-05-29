@@ -19,3 +19,4 @@ export const store = configureStore({
 store.subscribe(()=>{
   localStorage.setItem(REDUX_STATE_LC, JSON.stringify(store.getState()))
 })
+

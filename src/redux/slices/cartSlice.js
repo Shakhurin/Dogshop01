@@ -20,10 +20,6 @@ const cartSlice = createSlice({
       return state.filter((product) => product._id !== action.payload)
     },
 
-    deleteAllFromCart(state,action){
-      return myInitialState.cart
-    },
-
     incrementCart(state, action) {
       const product = state.find((el) => el._id === action.payload); // action payload - id продукта
       
@@ -48,5 +44,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const { deleteAllFromCart, addToCart, deleteFromCart, incrementCart, decrementCart } = cartSlice.actions;
+export const { addToCart, deleteFromCart, incrementCart, decrementCart } = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;

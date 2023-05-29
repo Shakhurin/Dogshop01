@@ -1,3 +1,8 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+}
+
 .cartTitle{
   font-weight: 700;
   margin: 0 10px 0 0;
@@ -10,10 +15,25 @@
 
 .cartHeader{
   display: flex;
-  align-items: center;
+  flex-direction: column ;
+  margin: 15px;
 }
 
-.plug{
+.emptyCartContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.block{
+  display: flex;
+}
+
+.order{
+  flex: 4;
+}
+
+.placement{
+  flex: 1;
 }

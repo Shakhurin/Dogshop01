@@ -18,3 +18,23 @@
 .deleteBtn{
   background-color: rgb(235, 102, 62);
 }
+
+.btn{
+  flex:1
+}
+
+.info{
+  flex: 3;
+}
+
+.img{
+  flex: 1;
+}
+
+.overAllprice{
+  flex:0.5;
+}
+
+.dlt{
+  flex:1;
+}
